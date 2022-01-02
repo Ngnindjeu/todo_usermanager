@@ -1,0 +1,18 @@
+GET http://localhost:8080/todolist HTTP/1.1
+
+###
+
+POST http://localhost:8080/entry HTTP/1.1
+Content-Type: application/json
+
+{
+"title": "testAdd"
+}
+
+###
+
+DELETE http://localhost:8080/entry/3
+
+###
+
+

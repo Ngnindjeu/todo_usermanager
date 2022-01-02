@@ -1,0 +1,76 @@
+<div class="modal-header">
+  <h4 class="modal-title">User bearbeiten</h4>
+  <button (click)="activeModal.dismiss()" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label for="firstName">Vorname</label>
+    <input
+      #fName="ngModel"
+      [(ngModel)]="firstName"
+      class="form-control"
+      id="firstName"
+      maxlength="30"
+      minlength="3"
+      name="firstName"
+      ngModel
+      pattern="[a-zA-Zäüöß ]*"
+      required
+      type="text"
+    >
+    <div *ngIf="fName.touched && !fName.valid" class="alert alert-danger">
+      <div *ngIf="fName?.errors?.['required']">
+        Vorname ist notwendig!
+      </div>
+      <div *ngIf="fName?.errors?.['minlength']">
+        Vorname muss mindestens {{fName?.errors?.['minlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="fName?.errors?.['maxlength']">
+        Vorname muss maximum {{fName?.errors?.['maxlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="fName?.errors?.['pattern']">
+        Vorname muss nur aus Buchstaben sein!!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Nachname</label>
+    <input
+      #lName="ngModel"
+      [(ngModel)]="lastName"
+      class="form-control"
+      id="lastName"
+      maxlength="30"
+      minlength="3"
+      name="lastName"
+      ngModel
+      pattern="[a-zA-Zäüöß ]*"
+      required
+      type="text">
+    <div *ngIf="lName.touched && !lName.valid" class="alert alert-danger">
+      <div *ngIf="lName?.errors?.['required']">
+        Nachname ist notwendig!
+      </div>
+      <div *ngIf="lName?.errors?.['minlength']">
+        Nachname muss mindestens {{lName?.errors?.['minlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="lName?.errors?.['maxlength']">
+        Nachname muss maximum {{lName?.errors?.['maxlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="lName?.errors?.['pattern']">
+        Nachname muss nur aus Buchstaben sein!!
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button (click)="activeModal.dismiss()" class="btn btn-outline-dark"
+          type="button">Schließen
+  </button>
+  <button (click)="save()" [disabled]="!fName?.['valid'] || !lName?.['valid']" class="btn btn-success" type="button">
+    Speichern
+  </button>
+</div>
+

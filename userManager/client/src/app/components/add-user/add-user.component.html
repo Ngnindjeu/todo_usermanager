@@ -1,0 +1,120 @@
+<form #userForm="ngForm" class="myStyle">
+  <h3>Nutzer hinzufügen</h3>
+  <div class="form-group">
+    <label for="firstName">Vorname</label>
+    <input
+      #firstName="ngModel"
+      class="form-control"
+      id="firstName"
+      maxlength="30"
+      minlength="3"
+      name="firstName"
+      ngModel
+      pattern="[a-zA-Zäüöß ]*"
+      required
+      type="text"
+      [(ngModel)]="user['firstName']"
+    >
+    <div
+      *ngIf="firstName.touched && !firstName.valid" class="alert alert-danger">
+      <div *ngIf="firstName?.errors?.['required']">
+        Vorname ist notwendig!
+      </div>
+      <div *ngIf="firstName?.errors?.['minlength']">
+        Vorname muss mindestens {{firstName?.errors?.['minlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="firstName?.errors?.['maxlength']">
+        Vorname muss maximum {{firstName?.errors?.['maxlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="firstName?.errors?.['pattern']">
+        Vorname muss nur aus Buchstaben sein!!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastname">Nachname</label>
+    <input
+      #lastName="ngModel"
+      class="form-control"
+      id="lastname"
+      maxlength="30"
+      minlength="3"
+      name="lastname"
+      ngModel
+      pattern="[a-zA-Zäüöß ]*"
+      required
+      type="text"
+      [(ngModel)]="user['lastName']"
+    >
+    <div
+      *ngIf="lastName.touched && !lastName.valid" class="alert alert-danger">
+      <div *ngIf="lastName?.errors?.['required']">
+        Nachname ist notwendig!
+      </div>
+      <div *ngIf="lastName?.errors?.['minlength']">
+        Nachname muss mindestens {{lastName?.errors?.['minlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="lastName?.errors?.['maxlength']">
+        Nachname muss maximum {{lastName?.errors?.['maxlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="firstName?.errors?.['pattern']">
+        Nachname muss nur aus Buchstaben sein!!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      #username="ngModel"
+      class="form-control"
+      id="username"
+      maxlength="30"
+      minlength="3"
+      name="username"
+      ngModel
+      required
+      type="text"
+      [(ngModel)]="user['username']"
+    >
+    <div
+      *ngIf="username.touched && !username.valid" class="alert alert-danger">
+      <div *ngIf="username?.errors?.['required']">
+        Username ist notwendig!
+      </div>
+      <div *ngIf="username?.errors?.['minlength']">
+        Username muss mindestens {{username?.errors?.['minlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="username?.errors?.['maxlength']">
+        Username muss maximum {{username?.errors?.['maxlength'].requiredLength}} character haben!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      #password="ngModel"
+      class="form-control"
+      id="password"
+      maxlength="30"
+      minlength="3"
+      name="password"
+      ngModel
+      required
+      type="password"
+      [(ngModel)]="user['password']"
+    >
+    <div
+      *ngIf="password.touched && !password.valid" class="alert alert-danger">
+      <div *ngIf="password?.errors?.['required']">
+        Password ist notwendig!
+      </div>
+      <div *ngIf="password?.errors?.['minlength']">
+        Password muss mindestens {{password?.errors?.['minlength'].requiredLength}} character haben!
+      </div>
+      <div *ngIf="password?.errors?.['maxlength']">
+        Password muss maximum {{password?.errors?.['maxlength'].requiredLength}} character haben!
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled]="!userForm?.['valid']" (click)="addUser(userForm)">Hinzufügen</button>
+</form>

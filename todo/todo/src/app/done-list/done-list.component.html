@@ -1,0 +1,25 @@
+<div class="done-list" *ngIf="doneList.length">
+  <h3>Done</h3>
+  <table class="table" >
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let todo of doneList; let i = index" [attr.data-index]="i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{todo.title}}</td>
+      <td>{{todo.date | customDate}}</td>
+      <td class="action-btn">
+        <button class="btn btn-secondary" *ngIf="todo.done" (click)="markAsUnDone(todo)">undone</button>
+        <button class="btn btn-danger" *ngIf="todo.done" (click)="deleteTodo(todo)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

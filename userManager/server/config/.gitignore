@@ -1,0 +1,3 @@
+# Ignore TypeScript files in the config directory; These are system specific
+*.ts
+config.js

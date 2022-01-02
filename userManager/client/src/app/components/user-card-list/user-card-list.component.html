@@ -1,0 +1,35 @@
+<div class="row mt-5">
+  <div *ngFor="let user of users" class="card myStyle col-3">
+    <div class="card-body">
+      <h5 class="card-title">{{user.firstName + ' ' + user.lastName}}</h5>
+      <p class="card-text">{{user.creationTime | date: 'MMM d, y'}}</p>
+      <a (click)="openModal(user)">
+    <span class="btn btn-sm btn-warning mr-3">
+        Bearbeiten
+    </span>
+      </a>
+      <a (click)="triggerModal(user, modalData)">
+    <span class="btn btn-sm btn-danger">
+        Löschen
+    </span>
+      </a>
+    </div>
+  </div>
+  <ng-template #modalData let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">User löschen</h4>
+      <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="close" type="button">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Möchten Sie wirklich <span
+        class="text-primary">{{userToDelete.firstName + ' ' + userToDelete.lastName}}</span> löschen?</strong></p>
+    </div>
+    <div class="modal-footer">
+      <button (click)="modal.close('Abbrechen click')" class="btn btn-outline-danger" type="button">Abbrechen</button>
+      <button (click)="deleteUser(modal, userToDelete)" class="btn btn-success" type="button">Bestätigen</button>
+    </div>
+  </ng-template>
+
+</div>

@@ -1,0 +1,14 @@
+
+.navbar {
+  color: white;
+  display: flex;
+}
+a {
+  margin-left: 6em;
+}
+
+a:hover{
+  color: yellow;
+}
+
+

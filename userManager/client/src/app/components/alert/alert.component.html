@@ -1,0 +1,6 @@
+<div *ngFor="let alert of alerts" class="alert alert-success" role="alert">
+  <strong [innerHTML]="alert.message"></strong>
+  <button (click)="removeAlert(alert)" aria-label="Close" class="close" data-dismiss="alert" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

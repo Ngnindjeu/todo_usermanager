@@ -1,0 +1,61 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Userman</a>
+    <button aria-controls="navbar-supported-content" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbar-supported-content" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div *ngIf="isLoggedIn; else elseBlock" class="collapse navbar-collapse" id="navbar-supported-content">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a [routerLink]="['/']" class="nav-link">Liste</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/add']" class="nav-link">Hinzufügen</a>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="isLoggedIn" class="container-sidebar">
+      <div id="logout-form">
+        <span class="navbar-brand" id="navbar-username"></span>
+        <button (click)="logoutUser()" class="btn btn-outline-info" id="logout-button" type="button">Abmelden</button>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <form class="form-inline my-2 my-lg-0" id="login-form">
+        <div class="input-group">
+          <input [(ngModel)]="user['username']" class="form-control" id="login-username" ngModel placeholder="Username"
+                 type="text">
+          <input [(ngModel)]="user['password']" class="form-control" id="login-password" ngModel placeholder="Password"
+                 type="password">
+          <div class="input-group-append">
+            <button (click)="loginUser()" class="btn btn-primary" type="submit">Login</button>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </nav>
+</header>
+
+<main role="main">
+  <!-- Messages window -->
+  <div class="container">
+    <div class="row pt-3">
+      <div class="col" id="messages">
+        <!-- Messages from the script will be inserted here -->
+        <alert></alert>
+      </div>
+    </div>
+  </div>
+</main>
+<div *ngIf="isLoggedIn" class="container" id="content">
+  <div class="row">
+    <div>
+      <div>
+        <h1>Usermanager</h1>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

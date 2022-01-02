@@ -1,0 +1,27 @@
+<b class="new-element"> <span> New Element</span> </b>
+<button class = "btn btn-secondary add-btn" routerLink="/new-Entry" (click)="openModal()">Add</button>
+
+<div class="undone-list" *ngIf="undoneList.length" >
+  <h3>Todo</h3>
+  <table class="table" >
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let todo of undoneList; let i = index" [attr.data-index]="i">
+      <th scope="row">{{ i + 1}}</th>
+      <td>{{todo.title}}</td>
+      <td>{{todo.date | customDate}}</td>
+      <td>
+        <button class="btn btn-secondary done-button"  (click)="markAsDone(todo)">done</button>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

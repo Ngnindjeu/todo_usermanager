@@ -1,0 +1,19 @@
+.done-list {
+  display: flex;
+  flex-flow: row;
+  margin-top: 3em;
+}
+h3 {
+  flex: 0 0 10%;
+  margin-left: 4%;
+  margin-top: 2em;
+}
+table {
+  flex: 0 0 86%;
+}
+.btn {
+  margin-left: 1em;
+}
+.action-btn{
+  float: end;
+}

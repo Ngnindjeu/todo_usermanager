@@ -1,0 +1,23 @@
+.undone-list {
+  display: flex;
+  flex-flow: row;
+}
+h3 {
+  flex: 0 0 10%;
+  margin-left: 4%;
+  margin-top: 2em;
+}
+table {
+  flex: 0 0 86%;
+}
+.add-btn {
+  margin: 20px 50px 20px 50px;
+}
+.done-button{
+  float :end;
+  margin-right :3.5em;
+}
+.new-element{
+  margin-left: 3em;
+}
+
